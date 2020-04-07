@@ -1,12 +1,21 @@
 // 배열 확장 : 리스트 메소드 추가하기
-Array.prototype.insert = function(index, value) {
-    if(value instanceof Array) {
+o = {
+    m: '',
+    f: function () {
+        this
+    }
+}
+
+el.addEventListener('click', o.f);
+
+Array.prototype.insert = function (index, value) {
+    if (value instanceof Array) {
         // for(var i=0; i<value.length; i++) {
         //     this.splice(index, 0, value[i]);
         //     index++;
         // }
         var _this = this;
-        value.forEach(function(element) {
+        value.forEach(function (element) {
             _this.splice(index++, 0, element);
         });
     } else {
@@ -14,7 +23,7 @@ Array.prototype.insert = function(index, value) {
     }
 }
 
-Array.prototype.remove = function(index) {
+Array.prototype.remove = function (index) {
     this.splice(index, 1);
 }
 
