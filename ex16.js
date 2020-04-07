@@ -1,42 +1,34 @@
-// String
+//URL 다루기
+var url = 'http://localhost:8080/mysite3?n=안대혁';
 
-// 배열처럼 접근이 가능하다.
-var str = "hello world";
-for(var i=0; i<str.length; i++) {
-    console.log(str[i]);
+//1. escape (x) : URL을 전부 encoding, deprecated
+var url2 = escape(url);
+console.log(url2);
+
+//2. encodeURI (o) : parameter 부분만 encoding
+var url3 = encodeURI(url);
+console.log(url3);
+
+//3. encodeURIComponent
+var url4 = encodeURIComponent(url);
+console.log(url4);
+
+//4. encodeURIComponent 사용 예
+var toQueryString = function(o){
+    var qs = [];
+    for(property in o){
+        qs.push(property + "=" + encodeURIComponent(o[property]));
+    }
+    return qs.join('&');
 }
 
-// 문자열 합치기
-var str1 = 'hello';
-var str2 = 'world';
-var str3 = str1 + ' ' + str2;
-console.log(str3);
+var url = "http://localhost:8080/mysite3";
 
-// 캐스팅
-var str4 = 5 + "5";
-console.log(str4);
+var o = {
+    no: 10,
+    name: '안대혁',
+    mail: 'kickscar@gmail.com'
+}
 
-// 메소드
-var str = 'string1 string2 string3';
-console.log(str.length);
-
-var index = str.indexOf('string2');
-console.log(index);
-var index = str.indexOf('string4');
-console.log(index); // 찾지 못하면...
-
-var str5 = str.substr(10); // 10~끝
-console.log(str5);
-
-var str6 = str.substr(10, 3/*count*/);
-console.log(str6);
-
-var str7 = str.substring(10, 13/*last index - 1*/);
-console.log(str7);
-
-var a = str.split(' ');
-console.log(a);
-
-var str8 = 'abcdef';
-var a = str8.split(':');
-console.log(a);
+var url5 = url + "?" + toQueryString(o);
+console.log(url5);

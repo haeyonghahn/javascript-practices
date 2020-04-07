@@ -1,39 +1,45 @@
-// 배열 확장 : 리스트 메소드 추가하기
-o = {
-    m: '',
-    f: function () {
-        this
-    }
+// String
+
+// 배열처럼 접근이 가능하다.
+var str = 'hello world';
+for(var i = 0; i < str.length; i++){
+    console.log(str[i]);
 }
 
-el.addEventListener('click', o.f);
+// 문자열 합치기
+var str1 = 'hello';
+var str2 = 'world';
+var str3 = str1 + ' ' + str2;
+console.log(str3);
 
-Array.prototype.insert = function (index, value) {
-    if (value instanceof Array) {
-        // for(var i=0; i<value.length; i++) {
-        //     this.splice(index, 0, value[i]);
-        //     index++;
-        // }
-        var _this = this;
-        value.forEach(function (element) {
-            _this.splice(index++, 0, element);
-        });
-    } else {
-        this.splice(index, 0, value);
-    }
-}
+// 캐스팅
+var str4 = 5 + "5";
+console.log(str4);
 
-Array.prototype.remove = function (index) {
-    this.splice(index, 1);
-}
+var str4 = "boolean:" + true;
+console.log(str4);
 
-// 리스트로 사용하기
-var a = [1, 2, 4];
-a.insert(2, 3);
+// 메소드
+var str = 'string1 string2 string3';
+console.log(str.length);
+
+var index = str.indexOf('string2');
+console.log(index);
+var index = str.indexOf('string4');
+console.log(index);  // 찾지 못하면 -1
+
+var str5 = str.substr(10) // 10~끝
+console.log(str5);
+
+var str6 = str.substr(10, 3/*count*/);
+console.log(str6);
+
+var str7 = str.substring(10, 13/*last index - 1*/);
+console.log(str7);
+
+var a = str.split(' ');
 console.log(a);
 
-a.remove(3);
+var str8 = 'abcdef';
+var a = str8.split(':');
 console.log(a);
-
-a.insert(2, ['a', 'b', 'c']); // 기대 : [1, 2, 'a', 'b', 'c', 3]
-console.log(a);               // 결과 : [1, 2, ['a', 'b', 'c'], 3]

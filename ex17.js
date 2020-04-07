@@ -1,37 +1,29 @@
-// URL 다루기
+// Date
 
-// 1. escape (x) : URL을 전부 encoding, deprecated
-var url = 'http:localhost:8080/mysite03?n=한해용';
-var url2 = escape(url);
+// 현재 시간
+var now = new Date();
+console.log(now);
 
-console.log(url2);
+// 2020년 4월 7일
+var d = new Date(2020, 3/*month-1*/, 7);
+console.log(now);
 
-// 2. encodingURI (o) : parameter 부분만 encoding
-var url3 = encodeURI(url);
-console.log(url3);
+// 2020년 4월 7일 12:30:40
+var d = new Date(2020, 3/*month-1*/, 7, 12, 30, 40);
+console.log(now);
 
-// 3. encodeURIComponent
-var url4 = encodeURIComponent(url);
-console.log(url4);
+// 객체 메서드
+console.log(
+    //"년도:" + (d.getYear() + 1900) + "\n"
+    "년도:" + d.getFullYear() + "\n" +
+    "월:" + (d.getMonth() + 1) + "\n" +
+    "일:" + d.getDate() + "\n" +
+    "시:" + d.getHours() + "\n" +
+    "분:" + d.getMinutes() + "\n" +
+    "초:" + d.getSeconds() + "\n" +
+    "밀리초:" + d.getMilliseconds() + "\n");
 
-// 4. encodeURIComponent 사용 예
-var url = "http://localhost:8080/mysite03";
-
-var o = {
-    no: 10,
-    name: '한해용',
-    mail: 'yong80211@gmail.com'
-}
-
-var toQueryString = function (o) {
-
-    var qs = [];
-    for (property in o) {
-        qs.push(property + "=" + encodeURIComponent(o[property]));
-    }
-
-    return qs.join('&');
-}
-
-var url5 = url + "?" + toQueryString(o);
-console.log(url5);
+d.setFullYear(2021);
+console.log(d);
+d.setMonth(11); //12월
+console.log(d);

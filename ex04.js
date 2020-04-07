@@ -1,33 +1,27 @@
-/* null과 undefined */
-var myVar1;
-var myVar2 = null;
+// 변수의 범위
+// 1. 자바스크립트는 자바와 같은 block scope는 없다. 
+// 2. function의 {} 안에서 변수에 var를 사용하게 되면 function scope가 된다.
+// 3. let(es6), const(es6)는 Block Scope를 만든다.
+var i = 10;
+var f = function(){
+	var i = 20;
+	j = 100;
+	console.log(i);
+	i = j - i;
+}
 
-console.log(myVar1 + ":" + myVar2);
-console.log(typeof(myVar1) + ":" + typeof(myVar2));
+{
+	let x = 100000;
+	const PI = 3.14;
+	x = 100;
+	
+// 상수이기 때문에 오류	
+// PI = 0;
+}
 
-console.log(myVar1 == myVar2);   //값비교
-console.log(myVar1 === myVar2);  //타입비교
+// 접근 안됨
+//console.log(x);
 
-console.log("=========================");
-
-// == : equality, 값의 등치성, 형변환 o
-console.log(1 == "1");
-console.log(true == 1);
-console.log('abc' == new String('abc'));
-
-console.log( true + 10 );
-console.log( 'abc' + new String('abc') );
-console.log( 1 + "1");
-console.log( "1" + 1);
-
-console.log("=========================");
-// === : identity, 객체의 동일성, 형변환 x
-console.log("2" === 2);
-console.log(true === 1);
-console.log('abc' === new String('abc'));
-
-console.log("=========================");
-// 추천
-// 엄격하게 형변환을 해서 두 피연산의 타입을 맞춰준다.
-var str = "5";
-console.log( parseInt(str) == 5 );
+f();
+console.log(i);
+console.log(j);

@@ -1,29 +1,48 @@
-// Date
+// 함수 객체를 생성하는 방법1
+function f1(a, b){
+    return a + b;
+}
+console.log(typeof(f1), f1(10, 20));
 
-// 현재 시간
-var now = new Date();
+// 함수 객체를 생성하는 방법2 : 리터럴
+ var sum1 = function(a, b){
+    return a + b;
+ }
+ console.log(typeof(sum1), sum1(10, 20));
 
-console.log(now);
+// 함수 객체를 생성하는 방법3 : new 연산자  생성자 함수
+var f3 = new Function('a', 'b', 'return a + b;');
+console.log(typeof(f3), f3(10, 20));
 
-// 2020년 4월 7일
-var d = new Date(2020, 3/*Month-1*/, 7);
-console.log(d);
+// 함수 객체를 생성하는 방법4 : 익명(Anonymous) 함수
+// callback
+setTimeout(function(){
+    console.log('time out!');
+}, 1000);
 
-// 2020년 4월 7일 12:30:40
-var d = new Date(2020, 3/*Month-1*/, 7, 12, 30, 40);
-console.log(d);
+// 즉시 실행 함수
+var sum = (function(a, b){  
+    return a + b;
+})(10, 20);
+console.log(sum);
 
-// 객체 메소드
-console.log(
-    "년도:" + d.getFullYear() + "\n" +
-    "월:" + (d.getMonth() + 1) + "\n" +
-    "일:" + d.getDate() + "\n" +
-    "시:" + d.getHours() + "\n" +
-    "분:" + d.getMinutes() + "\n" +
-    "초:" + d.getSeconds() + "\n" +
-    "밀리초:" + d.getMilliseconds() + "\n");
+// 가변 변수
+var sum2 = function(){
+    var sum = 0;
+    //for(var i = 0; i < arguments.length; i++){
+    //    sum += arguments[i];
+    //}
+    Array.prototype.forEach.call(arguments, function(element){
+        sum += element;
+    });
 
-d.setFullYear(2021);
-console.log(d);
-d.setMonth(5);
-console.log(d);
+    return sum;
+}
+
+console.log(sum2(1, 2));
+console.log(sum2(1, 2, 3));
+console.log(sum2(1, 2, 3, 4));
+console.log(sum2(1, 2, 3, 4, 5));
+
+
+console.log("test ends....");

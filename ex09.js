@@ -4,36 +4,39 @@ var o = {
 	isFemale: false
 };
 
-var f = function() {
-	console.log("hello world");
+var f = function(){
+	console.log("hello world");	
 }
 
 var i = 10;
 var n = new Number(10);
 
-f();
-console.log(o);
 
-console.log("========객체 확장==========");
+f();
+window.f();
+
+console.log(o);
+console.log(window.o);
+
+console.log("===========객체(object, fucntion) 확장================");
 
 o.another = {
-		name: "마이콜",
-		age: 30,		
+	name: "마이콜",
+	age: 30
 };
-
 console.log(o);
 
 f.another = {
-		name: "또치",
-		age: 10,
-		info: function() {
-			console.log(this.name + ":" + this.age);
-		}
+	name: "또치",
+	age:10,
+	info: function(){
+		console.log(this.name + ":" + this.age);
+	}
 };
-
 console.log(f.another);
 f.another.info();
 
-console.log("=========기본타입은 확장이 안된다.======");
+
+console.log("=============기본타입는 확장 X===============");
 i.another = {};
 console.log(i.another);

@@ -1,18 +1,38 @@
-// 생성자 함수로 다수의 객체 생성하기
+var o = {
+	name: "둘리",
+	age: 10,
+	isFemale: false
+};
 
-// 일반 함수(관례 소문자로 시작)
-var myFunction = function() {
-	console.log('일반 함수');
+var f = function(){
+	console.log("hello world");	
 }
 
-// 생성자 함수(관례 대문자로 시작)
-var MyObject = function(name, age) {
-	this.name = name;
-	this.age = age;
-}
+var i = 10;
+var n = new Number(10);
 
-var o4 = new MyObject('둘리', 10);
-var o5 = new MyObject('마이콜', 30);
+f();
+console.log(o);
 
-console.log(o4);
-console.log(o5);
+console.log("===========객체(object, fucntion) 확장================");
+
+o.another = {
+	name: "마이콜",
+	age: 30
+};
+console.log(o);
+
+f.another = {
+	name: "또치",
+	age:10,
+	info: function(){
+		console.log(this.name + ":" + this.age);
+	}
+};
+console.log(f.another);
+f.another.info();
+
+
+console.log("=============기본타입는 확장 X===============");
+i.another = {};
+console.log(i.another);
